@@ -1,3 +1,175 @@
-body {
-    padding-bottom: 120px; /* Space for fixed footer */
+/* Kung Fury + heavy CRT / VHS effects + 8-bit font */
+
+:root{
+  --bg: #050014;
+  --card: #0b0620;
+  --text: #ffe9ff;
+  --muted: #caa8d9;
+  --muted-alpha: rgba(202,168,217,0.10);
+  --accent: #ff2d95;
+  --accent-2: #00e7ff;
+  --accent-3: #ff9a2d;
+  --neon-glow: rgba(255,45,149,0.14);
 }
+
+/* Base page */
+html,body{
+  height:100%;
+  margin:0;
+  background:
+    radial-gradient(800px 400px at 10% 15%, rgba(255,154,45,0.06), transparent),
+    radial-gradient(700px 350px at 90% 85%, rgba(0,231,255,0.03), transparent),
+    linear-gradient(180deg, var(--bg) 0%, rgba(0,0,0,0.6) 100%);
+  color: var(--text);
+  font-family: 'Orbitron', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* 8-bit headings */
+h1, h2, h3 {
+  font-family: 'Press Start 2P', 'Orbitron', monospace;
+  letter-spacing: 1px;
+}
+
+/* Neon brand */
+.brand{ color:var(--accent); text-shadow:0 0 12px rgba(255,45,149,0.35); font-weight:700; }
+
+/* Card / UI */
+.card-ghost{
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), var(--card));
+  border: 1px solid rgba(255,255,255,0.03);
+  color: var(--muted);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(2,0,30,0.6), 0 0 30px rgba(0,231,255,0.02);
+}
+
+/* Neon buttons */
+.btn-accent{
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #07030a;
+  border: none;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.8), 0 0 18px rgba(255,45,149,0.25), 0 0 40px rgba(0,231,255,0.06);
+  transition: transform .12s ease, filter .12s ease;
+}
+.btn-accent:hover{ transform: translateY(-3px); filter: brightness(1.08); }
+
+/* Project thumb */
+.project-thumb{ height:120px; border-radius:8px; display:flex;align-items:center;justify-content:center; color:var(--muted); }
+
+/* Muted */
+.muted{ color:var(--muted); }
+
+/* --- CRT / VHS EFFECTS --- */
+
+/* SVG filter for screen curvature + subtle chromatic aberration */
+svg#crt-filters { position: absolute; width: 0; height: 0; }
+
+/* Overlay container that applies scanlines, vignette, chroma */
+.vhs-overlay{
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  mix-blend-mode: overlay;
+}
+
+/* animated scanlines */
+.scanlines{
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(0,0,0,0.12) 50%, rgba(255,255,255,0.01) 51%);
+  background-size: 100% 3px;
+  opacity: 0.6;
+  animation: scan 6s linear infinite;
+  mix-blend-mode: multiply;
+}
+
+/* horizontal wobble (VHS jitter) */
+.vhs-jitter{
+  position: absolute;
+  inset: 0;
+  animation: jitter 8s steps(3) infinite;
+  mix-blend-mode: normal;
+  opacity: 0.06;
+  background-image:
+    linear-gradient(90deg, rgba(255,0,100,0.02), rgba(0,200,255,0.02));
+  filter: blur(2px);
+}
+
+/* chromatic split lines */
+.chromatic{
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(255,45,149,0.06), transparent 10%),
+    radial-gradient(circle at 90% 90%, rgba(0,231,255,0.04), transparent 10%);
+  mix-blend-mode: screen;
+  opacity: 0.35;
+  animation: chroma 9s linear infinite;
+}
+
+/* rounded CRT vignette and subtle curvature using CSS mask + drop shadow */
+.crt-container{
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: inset 0 0 120px rgba(0,0,0,0.6);
+  filter: url('#crt'); /* apply SVG filter if available */
+}
+
+/* Animated VHS horizontal glitches using pseudo elements on body */
+body::before, body::after{
+  content: "";
+  pointer-events:none;
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  mix-blend-mode: overlay;
+}
+
+/* after = moving color band */
+body::after{
+  background: linear-gradient(90deg, rgba(255,45,149,0.02), rgba(0,231,255,0.02));
+  opacity: 0.06;
+  transform-origin: center;
+  animation: colorwave 12s linear infinite;
+  filter: blur(10px);
+}
+
+/* keyframes */
+@keyframes scan {
+  0% { background-position: 0 0; opacity: .55; }
+  50% { background-position: 0 50px; opacity: .35; }
+  100% { background-position: 0 0; opacity: .55; }
+}
+@keyframes jitter {
+  0% { transform: translateX(0) skewX(0); }
+  10% { transform: translateX(-4px) skewX(-0.5deg); }
+  20% { transform: translateX(2px) skewX(0.5deg); }
+  30% { transform: translateX(-3px) skewX(-0.4deg); }
+  40% { transform: translateX(1px) skewX(0.3deg); }
+  50% { transform: translateX(-2px) skewX(-0.2deg); }
+  60% { transform: translateX(0) skewX(0); }
+  100% { transform: translateX(0) skewX(0); }
+}
+@keyframes chroma {
+  0% { transform: translateY(0); opacity:0.35; }
+  50% { transform: translateY(6px); opacity:0.2; }
+  100% { transform: translateY(0); opacity:0.35; }
+}
+@keyframes colorwave {
+  0% { transform: translateX(-30%) scale(1); opacity: 0.06; }
+  50% { transform: translateX(30%) scale(1.03); opacity: 0.03; }
+  100% { transform: translateX(-30%) scale(1); opacity: 0.06; }
+}
+
+/* --- responsive tweaks --- */
+@media (max-width: 768px){
+  .vhs-overlay, .scanlines, .chromatic, .vhs-jitter { opacity: 0.45; }
+}
+
+/* Utility for stronger neon glow on headings or buttons */
+.neon-glow { text-shadow: 0 0 18px rgba(255,45,149,0.25), 0 0 40px rgba(0,231,255,0.08); }
+
+/* helper to ensure heavy effects don't block UI interactions */
+.pointer-safe { pointer-events: none; }

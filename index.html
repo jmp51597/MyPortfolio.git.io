@@ -1,47 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <title>My Portfolio - Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Portfolio</title>
+
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">My Portfolio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="projects.html">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <div class="container mt-5">
-        <h1>Welcome to My Portfolio</h1>
-        <p>This is the home page.</p>
+  <header class="py-3">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a class="brand fs-5 fw-bold text-decoration-none" href="#">Jordan Peleg</a>
+
+      <nav class="d-none d-lg-flex align-items-center gap-3">
+        <a class="nav-link" href="#about">About Me</a>
+        <a class="nav-link" href="#projects">My Projects</a>
+        <a class="nav-link" href="#contact">Contact Me</a>
+      </nav>
+
+    
     </div>
 
-    <footer class="bg-light text-start py-2 fixed-bottom">
-        <p>Name: Jordan Peleg <br> Email: <a href="mailto:jordanpeleg@gmail.com">jordanpeleg@gmail.com</a> <br> Phone: <a href="tel:818-307-7335">818-307-7335</a></p>
-    </footer>
+    <!-- Mobile nav -->
+    <div id="mobile-nav" class="collapse d-lg-none container mt-2">
+      <div class="d-flex flex-column gap-2">
+        <a class="nav-link p-2 rounded" href="#about">About Me</a>
+        <a class="nav-link p-2 rounded" href="#projects">My Projects</a>
+        <a class="nav-link p-2 rounded" href="#contact">Contact Me</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <div class="d-flex hero-row align-items-center justify-content-between">
+          <div class="me-4 flex-grow-1">
+            <h1 class="mb-2">Hi, I'm Jordan Peleg</h1>
+            <p class="lead muted mb-3">I build elegant web experiences.</p>
+            <div class="d-flex gap-2">
+              <a href="#projects" class="btn btn-accent">View projects</a>
+              <a href="#contact" class="btn btn-ghost">Contact</a>
+            </div>
+          </div>
+
+          <aside class="card-ghost p-3" style="width:280px;">
+            <div class="avatar-placeholder mb-3"><img src="" alt="Jordan Peleg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+            <ul class="list-unstyled mb-0">
+              <li class="d-flex justify-content-between py-2" style="border-top:1px dashed var(--muted-alpha);border-top-width:0;">
+                <strong class="text-emph">Role</strong><span class="muted">Full-Stack Developer</span>
+              </li>
+              <li class="d-flex justify-content-between py-2" style="border-top:1px dashed var(--muted-alpha);">
+                <strong class="text-emph">Located</strong><span class="muted">Los Angeles, CA</span>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-5">
+      <div class="container">
+        <h2>About Me</h2>
+        <p class="muted">I’m a cinematographer and photographer transitioning into full‑stack development. 
+                    With years of experience running shoots, managing teams and media workflows, and delivering high‑quality
+                    visual content, I bring strong project management, problem‑solving, and attention‑to‑detail to software development.
+                    I’m currently building full‑stack skills (JavaScript, React, Node.js) and applying my creative technical background to build polished, user‑focused web applications.
+                    I’m eager to contribute to collaborative teams where I can combine my production experience with modern web development.</p>
+
+        <div class="d-flex flex-wrap gap-2 mt-3">
+          <span class="badge skill">HTML &amp; CSS</span>
+          <span class="badge skill">JavaScript</span>
+          <span class="badge skill">React</span>
+          <span class="badge skill">Testing</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-5 bg-transparent">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="row g-4 mt-3">
+          <div class="col-sm-6 col-lg-4">
+            <article class="p-3 card-ghost h-100 d-flex flex-column rounded-3">
+              <div class="project-thumb mb-3">Preview</div>
+              <h5>Calculator</h5>
+              <p class="muted mb-2">Short description of the project with tech tags below.</p>
+              <div class="d-flex gap-2 flex-wrap mb-3">
+                <span class="tag">React</span><span class="tag">API</span>
+              </div>
+              <div class="mt-auto d-flex gap-2">
+                <a class="btn btn-sm btn-accent" href="#">Live</a>
+                <a class="btn btn-sm btn-ghost" href="#">Code</a>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4">
+            <article class="p-3 card-ghost h-100 d-flex flex-column rounded-3">
+              <div class="project-thumb mb-3">Preview</div>
+              <h5>Project Title</h5>
+              <p class="muted mb-2">Short description of the project with tech tags below.</p>
+              <div class="d-flex gap-2 flex-wrap mb-3">
+                <span class="tag">Next.js</span><span class="tag">Styling</span>
+              </div>
+              <div class="mt-auto d-flex gap-2">
+                <a class="btn btn-sm btn-accent" href="#">Live</a>
+                <a class="btn btn-sm btn-ghost" href="#">Code</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-5">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="muted">Feel free to reach out</p>
+
+        <div class="row g-3 mt-3">
+          <div class="col-md-6">
+            <div class="p-3 card-ghost rounded-3">
+              <h5>Email</h5>
+              <p><a href="mailto:jordanpeleg@gmail.com" class="muted">jordanpeleg@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 card-ghost rounded-3">
+              <h5>Social</h5>
+              <p class="muted"><a href="https://www.instagram.com/jordan_peleg/" target="_blank" rel="noopener">Instagram</a> · <a href="https://github.com/jmp51597" target="_blank" rel="noopener">GitHub</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-3">
+    <div class="container d-flex justify-content-center">
+      <p class="mb-0">© <span id="year"></span> Jordan Peleg • jordanpeleg@gmail.com</p>
+    </div>
+  </footer>
+  <!-- VHS / CRT overlays (place before scripts) -->
+<svg id="crt-filters" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <filter id="crt">
+    <!-- slight barrel distortion / displacement (works in some browsers) -->
+    <feTurbulence type="fractalNoise" baseFrequency="0.0009" numOctaves="1" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+    <!-- gentle chromatic split -->
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                         0 1 0 0 0
+                                         0 0 1 0 0
+                                         0 0 0 1 0" result="mat"/>
+    <feGaussianBlur stdDeviation="0.6" />
+  </filter>
+</svg>
+
+<div class="vhs-overlay pointer-safe">
+  <div class="scanlines"></div>
+  <div class="vhs-jitter"></div>
+  <div class="chromatic"></div>
+</div>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
+
+
+  <script src="script.js"></script>
 </body>
 </html>
